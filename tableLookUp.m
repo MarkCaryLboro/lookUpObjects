@@ -177,7 +177,7 @@ classdef tableLookUp < lookUp
             %
             % Z     --> Response data, must be "x"-columns by "y"-rows.
             %--------------------------------------------------------------
-            if ( nargin < 2 ) || any( size( Z ) ~= obj.Nbp )
+            if ( nargin < 2 ) || any( fliplr( size( Z ) ) ~= obj.Nbp )
                 %----------------------------------------------------------
                 % Throw an error
                 %----------------------------------------------------------
@@ -189,6 +189,34 @@ classdef tableLookUp < lookUp
                 %----------------------------------------------------------
                 obj.Z = Z;
             end
+        end
+        
+        function plot( obj, Ax )
+            %--------------------------------------------------------------
+            % Generate a surface mesh plot for the table
+            %
+            % obj.plot();      % plot to a new figure { default }
+            % obj.plot( Ax );  % plot on the axes indicated
+            %
+            % Input Arguments:
+            %
+            % Ax    --> Axes handle
+            %--------------------------------------------------------------
+            if ( nargin < 2 ) || ~ishandle( Ax ) || ~strcmpi( 'axes', Ax.Type )
+                %----------------------------------------------------------
+                % Create a new figure and Axes object
+                %----------------------------------------------------------
+                Fig = figure;
+                Ax = axes( 'Parent', Fig );
+            end
+            axes( Ax );
+            [ X, Y ] = meshgrid( obj.CBP, obj.RBP );
+            mesh( X, Y, obj.Z );
+            grid on;
+            xlabel( obj.Xname( 1 ), 'FontSize', 14, 'Interpreter', 'None' );
+            ylabel( obj.Xname( 2 ), 'FontSize', 14, 'Interpreter', 'None' );
+            zlabel( obj.Zname, 'FontSize', 14 );
+            title( obj.Name, 'FontSize', 14, 'Interpreter', 'None' );
         end
     end % ordinary abstract method signatures
     

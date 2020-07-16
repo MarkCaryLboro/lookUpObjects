@@ -159,12 +159,10 @@ classdef fcnLookUp < lookUp
                 Fig = figure;
                 Ax = axes( 'Parent', Fig );
             end
-            axes( Ax );
-            plot( obj.BPS, obj.Z, 'bs-', 'LineWidth', 2, 'MarkerFaceColor', 'blue' );
+            plot( Ax, obj.BPS, obj.Z, 'bs-', 'LineWidth', 2, 'MarkerFaceColor', 'blue' );
             grid on;
-            xlabel( obj.Xname, 'FontSize', 14, 'Interpreter', 'None' );
-            ylabel( obj.Zname, 'FontSize', 14, 'Interpreter', 'None' );
-            title( obj.Name, 'FontSize', 14, 'Interpreter', 'None' );
+            xlabel( obj.Xname );
+            ylabel( obj.
         end
     end % ordinary and constructor methods
     

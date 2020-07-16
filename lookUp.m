@@ -33,6 +33,7 @@ classdef lookUp
         obj = setBounds( obj, A, B );                                       % set bounds for breakpoints
         obj = setBreakPoints( obj, X );                                     % set the breakpoint locations manually
         obj = setResponse( obj, Z );                                        % set the response data
+        plot( obj );                                                        % plot the function or surface
     end % ordinary abstract method signatures
     
     methods ( Access = protected, Abstract = true )
