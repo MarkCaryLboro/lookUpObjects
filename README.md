@@ -12,5 +12,7 @@ lookUp      --> Abstract interface
 fcnLookUp   --> 1-dimensional look up table
 tableLookUp --> 2-dimensional look up table
 
+Added plotting functionality to the classes. 16/07/2020
+
 %%%%% TO DO %%%%%
 Implement regularised fitting and optimal breakpoint location via shared average curvature. 
