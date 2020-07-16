@@ -137,7 +137,7 @@ classdef fcnLookUp < lookUp
             % X     --> Data input vector.
             %--------------------------------------------------------------
             X = obj.clipData( X( : ) );
-            In = obj.X{:};
+            In = obj.BP{:};
             Z = interp1( In, obj.Z, X, 'linear' );                          % Linearly interpolate user supplied data
         end
         

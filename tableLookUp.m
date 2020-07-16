@@ -255,8 +255,10 @@ classdef tableLookUp < lookUp
             % Xc = obj.clipData( X );
             %--------------------------------------------------------------
             [ Lo, Hi ] = obj.dataOutofBnds( X );
-            X( Lo ) = obj.A;
-            X( Hi ) = obj.B;
+            for Q = 1:2
+                X( Lo( :, Q ) ) = obj.A( Q );
+                X( Hi( :, Q ) ) = obj.B( Q );
+            end
         end
     end % protected methods
     
