@@ -95,8 +95,8 @@ classdef fcnLookUp < lookUp
                 %----------------------------------------------------------
                 % Assign breakpoints and reset bounds
                 %----------------------------------------------------------
-                obj.BPs = BPs(:);
-                obj = setBounds( min( BPs ), max( BPs ) );
+                obj.BP = { BPs(:) };
+                obj = obj.setBounds( min( BPs ), max( BPs ) );
             end
         end
         
