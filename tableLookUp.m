@@ -75,7 +75,7 @@ classdef tableLookUp < lookUp
             if ( size( In, 2 ) ~= 2 )
                 error('Input data vector must have 2 columns');
             end
-            [ X, Y] = meshgrid( obj.BP{ 1 }, obj.BP{ 2 } );
+            [ X, Y] = meshgrid( obj.CBP, obj.RBP );
             In = obj.clipData( In );
             Out = interp2( X, Y, obj.Z, In( :, 1 ), In( :, 2 ), 'linear' );
         end
@@ -255,10 +255,10 @@ classdef tableLookUp < lookUp
             % Xc = obj.clipData( X );
             %--------------------------------------------------------------
             [ Lo, Hi ] = obj.dataOutofBnds( X );
-            for Q = 1:2
-                X( Lo( :, Q ) ) = obj.A( Q );
-                X( Hi( :, Q ) ) = obj.B( Q );
-            end
+            LowerClip = repmat( obj.A, size( X, 1 ), 1 );
+            UpperClip = repmat( obj.B, size( X, 1 ), 1 );
+            X( Lo ) = LowerClip( Lo );
+            X( Hi ) = UpperClip( Hi );
         end
     end % protected methods
     
